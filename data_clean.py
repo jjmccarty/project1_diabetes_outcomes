@@ -46,7 +46,7 @@ def getDataFrameForFile(filename):
     print(f'----> Retrieving information for {filename}')
     df_list = []
     for year in range(2019, 2023):
-        filepath = f'../Resources/diabetes_{str(year)}_{filename}.csv'
+        filepath = f'Resources/diabetes_{str(year)}_{filename}.csv'
         print(filepath)
         df_list.append(pd.read_csv(filepath))
 
@@ -57,9 +57,9 @@ def getDataFrameForFile(filename):
 if __name__ == '__main__':
     print('Run data_clean.py')
 
-    #print(getDiabetesDF_OverallCrude().info())
-    #print(getDiabetesDF_OverallAgeAdjusted().info())
-    #print(getDiabetesDF_ByEthnicity().info())
-    #print(getDiabetesDF_BySex_Crude().info())
-    #print(getDiabetesDF_BySex_AgeAdjusted().info())
-    #print(getDiabetesDF_ByAge().info())
+    print(getDiabetesDF_OverallCrude().info())
+    print(getDiabetesDF_OverallAgeAdjusted().info())
+    print(getDiabetesDF_ByEthnicity().info())
+    print(getDiabetesDF_BySex_Crude().info())
+    print(getDiabetesDF_BySex_AgeAdjusted().info())
+    print(getDiabetesDF_ByAge().info())
