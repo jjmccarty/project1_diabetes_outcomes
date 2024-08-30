@@ -1,15 +1,14 @@
 # Dependencies
-import requests
-import time
-from dotenv import load_dotenv
-import os
-import pandas as pd
-import json
-import sys
-import pathlib
-import csv
-import datetime
 
+
+
+import pandas as pd
+
+midwest=['MI', 'OH', 'IN', 'IL', 'WI', 'MO', 'IA', 'MN', 'ND', 'SD', 'NE', 'KS']
+northeast = ['PA', 'NY', 'VT', 'MA', 'CT', 'RI', 'NJ', 'NH', 'DE', 'MD', 'ME','DC']
+southwest= ['TX', 'OK', 'AR', 'LA', 'MS', 'AL', 'GA', 'FL', 'SC', 'NC', 'VA', 'WV', 'KY', 'TN' ]
+west=['MT', 'WY', 'CO', 'NM', 'AZ', 'UT', 'ID', 'OR', 'NV', 'CA', 'WA' ]
+non_cont= ['HI', 'VI','AK', 'GU','PR']
 
 def getDiabetesDF_OverallCrude():
     df = getDataFrameForFile('overall_crude')
@@ -28,6 +27,7 @@ def getDiabetesDF_BySex_Crude():
     #do cleaning work here
     cleanBasicData(df)
     return df 
+
 
 def getDiabetesDF_BySex_AgeAdjusted():
     df = getDataFrameForFile('female_ageadjusted')
@@ -60,7 +60,11 @@ def cleanBasicData(df):
                      'DisplayOrder', 
                      'DataValueFootnoteSymbol'], inplace=True)
     
-    print(df.columns)
+    df.loc[df['LocationAbbr'].isin (midwest),"Region"]='Midwest'
+    df.loc[df['LocationAbbr'].isin (northeast),"Region"]='Northeast'
+    df.loc[df['LocationAbbr'].isin (southwest),"Region"]='Southwest'
+    df.loc[df['LocationAbbr'].isin (west),"Region"]='West'
+    df.loc[df['LocationAbbr'].isin (non_cont),"Region"]='Non Cont'
 
 
 
