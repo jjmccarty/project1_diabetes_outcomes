@@ -1,6 +1,11 @@
+"""
+THIS FILE IS DEPRECATED AND NOT USED IN THE FINAL SOLUTION/MODEL.
+
+Utilities to extractdata from the specified diabetes source csv and provides a 
+cleaned dataframe. 
+"""
+
 # Dependencies
-
-
 
 import pandas as pd
 
@@ -11,18 +16,33 @@ west=['MT', 'WY', 'CO', 'NM', 'AZ', 'UT', 'ID', 'OR', 'NV', 'CA', 'WA' ]
 non_cont= ['HI', 'VI','AK', 'GU','PR']
 
 def getDiabetesDF_OverallCrude():
+    """
+    Retrieves the overall_crude value for the diabetes rates in US population
+    Args:None
+    Returns:Dataframe of diabetes values
+    """
     df = getDataFrameForFile('overall_crude')
     #do cleaning work here
     cleanBasicData(df)
     return df 
         
 def getDiabetesDF_OverallAgeAdjusted():
+    """
+    Retrieves the overall_adjusted value for the diabetes rates in US population
+    Args:None
+    Returns:Dataframe of diabetes values
+    """
     df = getDataFrameForFile('overall_ageadjusted')
     #do cleaning work here
     cleanBasicData(df)
     return df 
 
 def getDiabetesDF_BySex_Crude():
+    """
+    Retrieves the diabetes rates in US population for male/female 
+    Args:None
+    Returns:Dataframe of diabetes values
+    """
     df = getDataFrameForFile('female_crude')
     #do cleaning work here
     cleanBasicData(df)
@@ -30,24 +50,44 @@ def getDiabetesDF_BySex_Crude():
 
 
 def getDiabetesDF_BySex_AgeAdjusted():
+    """
+    Retrieves the diabetes rates in US population for male/female adjusted by age
+    Args:None
+    Returns:Dataframe of diabetes values
+    """
     df = getDataFrameForFile('female_ageadjusted')
     #do cleaning work here
     cleanBasicData(df)
     return df 
 
 def getDiabetesDF_ByAge():
+    """
+    Retrieves the diabetes rates in US population by age
+    Args:None
+    Returns:Dataframe of diabetes values
+    """
     df = getDataFrameForFile('age_18to44')
     #do cleaning work here
     cleanBasicData(df)
     return df 
 
 def getDiabetesDF_ByEthnicity():
+    """
+    Retrieves the diabetes rates in US population by ethnicity 
+    Args:None
+    Returns:Dataframe of diabetes values
+    """
     df = getDataFrameForFile('ethno_asian_crude')
     #do cleaning work here
     cleanBasicData(df)
     return df 
 
 def cleanBasicData(df):
+    """
+    Cleans the dataframe and creates the Region data based on state/location
+    Args:df - the dataframe values to clean/update
+    Returns:None
+    """
     print(df.columns)
     df.drop(columns=['LocationDesc', 
                      'TopicID', 
@@ -69,6 +109,12 @@ def cleanBasicData(df):
 
 
 def getDataFrameForFile(filename):
+    """
+    Retrieves the csv data for the filename specified for all years as a 
+    single concatenated dataframe 
+    Args: filename - the base name of the file to retrieve
+    Returns:Dataframe of diabetes values
+    """
     print(f'----> Retrieving information for {filename}')
     df_list = []
     for year in range(2019, 2023):
