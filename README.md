@@ -12,6 +12,12 @@ The following team members were all original contributors to project
 - Jessica McCarty
 - Evelyn Browning
 
+## Project Files
+The following files are the core code for the project
+- ```diabetes.csv``` - data file backing the project dataframe
+- ```data_outcomes.py``` - python file for basic data processing and cleaning
+- ```data_outcomes_notebook.ipynb``` - notebook for data evaluation, model creation and plotting
+
 ## Data Sources
 Data sources for this analysis come from existing publicly available sources on Kaggel https://www.kaggle.com/datasets/akshaydattatraykhare/diabetes-dataset.  This data was pulled down as ```diabetes.csv``` in the existing project. 
 
